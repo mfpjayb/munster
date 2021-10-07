@@ -6,10 +6,10 @@ import { ifHyperScript } from "../hyper-script/if-hyper-script";
 import { initModule } from "../module/init-module";
 
 export function setupApp(target: string, rootModule: any): void {
-    global.e = hyperScript;
-    global.c = childComponentHyperScript;
-    global.i = ifHyperScript;
-    global.f = forHyperScript;
+    globalThis.e = hyperScript;
+    globalThis.c = childComponentHyperScript;
+    globalThis.i = ifHyperScript;
+    globalThis.f = forHyperScript;
 
     const module = initModule(rootModule, null);
     const selector = module.getBootstrap().selector;

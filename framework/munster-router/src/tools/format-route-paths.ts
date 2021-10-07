@@ -12,12 +12,4 @@ export function formatRoutePaths(routes: IRoute[], parentPath: string): IRoute[]
         };
     });
 
-    // routes.forEach((route, index) => {
-    //     routes[index].path = `${parentPath}/${route.path}`.replace(/\/\//g, '/');
-    //     if (routes[index].children) {
-    //         routes[index].children = formatRoutePaths(routes[index].children, routes[index].path);
-    //     }
-    // });
-
-    // return routes;
 }

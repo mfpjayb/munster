@@ -1,17 +1,14 @@
-import { ComponentExtensions } from "../core/component/component-extensions";
-import { Component } from "../core/component/component.decorator";
-import { childComponentHyperScript } from "../core/hyper-script/child-component-hyper-script";
-import { hyperScript, IHyperScript } from "../core/hyper-script/hyper-script";
-import { ifHyperScript } from "../core/hyper-script/if-hyper-script";
-import { initModule } from "../core/module/init-module";
+import { ComponentExtensions } from "munster-core";
+import { Component } from "munster-core";
+import { initModule } from "munster-core";
 import { ROUTER_DIRECTIVE_DATA_KEY } from "./router.directive";
 import { IRoute, MODULE_ROUTE_DATA_KEY } from "./router.module";
 import { RouterService } from "./router.service";
 import { routeMatcher } from "./tools/route-matcher";
 
-declare const e: typeof hyperScript;
-declare const c: typeof childComponentHyperScript;
-declare const i: typeof ifHyperScript;
+declare const e: any;
+declare const c: any;
+declare const i: any;
 
 interface IExtendedRoute extends IRoute {
     show: boolean;
@@ -21,7 +18,7 @@ interface IExtendedRoute extends IRoute {
     selector: 'router-outlet-fragment'
 })
 export class RouterFragmentComponent extends ComponentExtensions {
-    $render(): IHyperScript {
+    $render(): any {
         return e('fragment', {}, [
             c('router-outlet', this)
         ]);
@@ -94,7 +91,7 @@ export class RouterOutletComponent extends ComponentExtensions {
         });
     }
 
-    $render(): IHyperScript {
+    $render(): any {
         let elements = [];
 
         for(let ii = 0; ii < this.routes.length; ii++) {

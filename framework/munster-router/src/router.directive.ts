@@ -1,6 +1,6 @@
-import { createWatcher } from "../core/component/tools/create-watcher";
-import { Directive } from "../core/directive/directive";
-import { errorHandler } from "../utils/error-handler";
+import { createWatcher } from "munster-core";
+import { Directive } from "munster-core";
+import { errorHandler } from "../../utils/error-handler";
 import { navigate } from "./tools/navigate";
 
 export const ROUTER_DIRECTIVE_DATA_KEY = 'ROUTER_DIRECTIVE_DATA_KEY';

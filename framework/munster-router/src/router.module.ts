@@ -1,5 +1,5 @@
-import { ModuleExtensions } from "../core/module/module-extensions";
-import { Module } from "../core/module/module.decorator";
+import { ModuleExtensions } from "munster-core";
+import { Module } from "munster-core";
 import { RouterDirective } from "./router.directive";
 import { RouterFragmentComponent, RouterOutletComponent } from "./router-outlet.component";
 import { formatRoutePaths } from "./tools/format-route-paths";

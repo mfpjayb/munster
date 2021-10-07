@@ -12,9 +12,9 @@ export interface ITypedHyperScript {
     parentComponent?: any;
     valueCaller?: () => any;
     elementCaller?: () => IHyperScript;
-    attributes: object;
-    directives: THyperScriptDirective[];
-    rawComponent: any;
+    attributes?: object;
+    directives?: THyperScriptDirective[];
+    rawComponent?: any;
 }
 
 export function childComponentHyperScript(
