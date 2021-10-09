@@ -1,4 +1,4 @@
-import { errorHandler } from "../../utils/error-handler";
+import { errorHandler } from "../utils/error-handler";
 import { IComponentHutchConfig } from "./component-hutch";
 
 export function constructChildComponent(selector: string, parent: any, rawComponent: any) {

@@ -1,6 +1,5 @@
 {
     "plugins": [
-        "module:munster-transformer",
         ["@babel/plugin-proposal-decorators", { "legacy": true }],
         "babel-plugin-transform-typescript-metadata"
     ]

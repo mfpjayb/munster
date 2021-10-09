@@ -1,7 +1,8 @@
-import { errorHandler } from "../../utils/error-handler";
+import { errorHandler } from "../utils/error-handler";
 import { IHyperScript } from "../hyper-script/hyper-script";
 import { hyperScriptToElement } from "../hyper-script/hyper-script-to-element";
 import { applyChangeDetection } from "./apply-change-detection";
+import { container } from "tsyringe";
 
 export interface IComponentHutchConfig {
     component: any;
@@ -38,7 +39,7 @@ export function componentHutch(Component: any): CustomElementConstructor {
                 errorHandler(`The component with selector '${componentConfig.selector}' is not defined in this module.`);
             }
 
-            this.component = new componentConfig.component();
+            this.component = container.resolve(componentConfig.component);
             this.parentComponentWrapper = componentConfig.parentComponentWrapper;
             this.module = componentConfig.module;
 

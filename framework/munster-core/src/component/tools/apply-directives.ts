@@ -1,4 +1,4 @@
-import { errorHandler } from "../../../utils/error-handler";
+import { errorHandler } from "../../utils/error-handler";
 import { Directive } from "../../directive/directive";
 import { THyperScriptDirective } from "../../hyper-script/hyper-script";
 

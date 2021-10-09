@@ -14,7 +14,7 @@ export function hyperScriptToElement(hyperScript: THyperScriptChild, component: 
     }
 
     const typedHyperScript: ITypedHyperScript = hyperScript as any;
-    const { type, name, parentComponent, valueCaller, elementCaller, rawComponent } = typedHyperScript;
+    const { type, name, valueCaller, elementCaller, rawComponent } = typedHyperScript;
     let element: any;
     if (type) {
         if (type === EHyperScriptTypes.IF) {
@@ -26,7 +26,7 @@ export function hyperScriptToElement(hyperScript: THyperScriptChild, component: 
         }
 
         if (type === EHyperScriptTypes.COMPONENT) {
-            element = constructChildComponent(name, parentComponent, rawComponent);
+            element = constructChildComponent(name, component, rawComponent);
         }
     }
 

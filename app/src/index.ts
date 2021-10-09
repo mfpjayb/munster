@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { setupApp } from '../framework/core/app/setup-app';
+import { setupApp, renderApp } from 'munster-core';
 import { AppModule } from './app/app.module';
 
 /**
@@ -12,4 +12,6 @@ import { AppModule } from './app/app.module';
  * transformer
  */
 
-setupApp('app-root', AppModule);
+setupApp();
+
+renderApp(document.getElementById('app-root'), AppModule);

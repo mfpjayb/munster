@@ -1,4 +1,4 @@
-import { isObject } from "../../utils/is-object";
+import { isObject } from "../utils/is-object";
 
 interface IObject {
     [key: string]: any;

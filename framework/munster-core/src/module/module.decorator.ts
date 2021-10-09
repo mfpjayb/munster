@@ -1,5 +1,5 @@
+import { container } from "tsyringe";
 import { defineWebComponent } from "../component/define-web-component";
-import { Injectable } from "../decorators/injectable.decorator";
 import { Directive } from "../directive/directive";
 import { initModule } from "./init-module";
 
@@ -19,7 +19,7 @@ interface IModuleConfig {
 export function Module(config: IModuleConfig) {
     return function(Target: any): any {
 
-        return Injectable()(class extends Target {
+        const NewClass: typeof Target = class extends Target {
             private subModuleExports: IModuleExports[] = [];
             private data: object = {};
 
@@ -100,6 +100,10 @@ export function Module(config: IModuleConfig) {
                 defineWebComponent(Component, this);
             }
 
-        });
+        };
+
+        container.register(NewClass, { useClass: NewClass });
+
+        return NewClass;
     }
 }

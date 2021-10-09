@@ -1,3 +1,4 @@
+import { THyperScriptChild } from "../../lib/hyper-script/hyper-script";
 import { IHyperScript, THyperScriptDirective } from "./hyper-script";
 
 export enum EHyperScriptTypes {
@@ -9,27 +10,27 @@ export enum EHyperScriptTypes {
 export interface ITypedHyperScript {
     type: EHyperScriptTypes;
     name?: string;
-    parentComponent?: any;
     valueCaller?: () => any;
     elementCaller?: () => IHyperScript;
     attributes?: object;
     directives?: THyperScriptDirective[];
     rawComponent?: any;
+    children?: THyperScriptChild[];
 }
 
 export function childComponentHyperScript(
     name: string,
-    parentComponent: any,
     attributes: object = {},
+    children: THyperScriptChild[] = [],
     directives: THyperScriptDirective[] = [],
     rawComponent: any = null
 ): ITypedHyperScript {
     return {
         name,
         type: EHyperScriptTypes.COMPONENT,
-        parentComponent,
         attributes,
         directives,
-        rawComponent
+        rawComponent,
+        children
     };
 }

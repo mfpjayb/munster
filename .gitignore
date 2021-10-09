@@ -2,3 +2,4 @@
 **/.vscode
 **/.parcel-cache
 app/dist
+framework/munster-core/lib
