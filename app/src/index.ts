@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { setupApp, renderApp } from 'munster-core';
+import { setupApp, renderApp } from '@munster/core';
 import { AppModule } from './app/app.module';
 
 /**

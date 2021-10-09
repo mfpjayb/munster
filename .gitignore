@@ -3,3 +3,4 @@
 **/.parcel-cache
 app/dist
 framework/munster-core/lib
+framework/munster-router/lib

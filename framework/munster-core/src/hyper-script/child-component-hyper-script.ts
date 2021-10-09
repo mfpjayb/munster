@@ -1,5 +1,4 @@
-import { THyperScriptChild } from "../../lib/hyper-script/hyper-script";
-import { IHyperScript, THyperScriptDirective } from "./hyper-script";
+import { IHyperScript, THyperScriptChild, THyperScriptDirective } from "./hyper-script";
 
 export enum EHyperScriptTypes {
     COMPONENT = 'c',

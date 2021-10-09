@@ -1,6 +1,4 @@
-import { ComponentExtensions } from "munster-core";
-import { Component } from "munster-core";
-import { initModule } from "munster-core";
+import { ComponentExtensions, Component, initModule } from "@munster/core";
 import { ROUTER_DIRECTIVE_DATA_KEY } from "./router.directive";
 import { IRoute, MODULE_ROUTE_DATA_KEY } from "./router.module";
 import { RouterService } from "./router.service";
@@ -99,7 +97,7 @@ export class RouterOutletComponent extends ComponentExtensions {
                 i(
                     () => this.routes[ii].show,
                     () => c(
-                        this.routes[ii].component.selector, this, {}, [['router', 'data', () => (this.routes[ii].children || [])]],
+                        this.routes[ii].component.selector, {}, [], [['router', 'data', () => (this.routes[ii].children || [])]],
                         this.routes[ii].rawComponent
                     )
                 )

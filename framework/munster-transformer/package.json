@@ -1,6 +1,12 @@
 {
-  "name": "munster-transformer",
-  "version": "0.0.0",
+  "name": "@munster/transformer",
+  "version": "0.0.2",
   "main": "src/index.js",
-  "license": "MIT"
+  "scripts": {
+    "patch-release": "npm version patch && npm publish"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "ISC"
 }
