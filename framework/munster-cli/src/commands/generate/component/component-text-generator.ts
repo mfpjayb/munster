@@ -7,7 +7,7 @@ import { kebabToCamel } from "../../../utils/kebab-to-camel";
  */
 export function componentTextGenerator(name: string) {
     const className = kebabToCamel(`-${name}`);
-    return `import { Component } from "munster-core";
+    return `import { Component } from "@munster/core";
 
 @Component({
     selector: 'app-${name}'
