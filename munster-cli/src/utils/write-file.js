@@ -1,11 +1,11 @@
-import { dirname } from 'path';
-import { mkdirSync, writeFile as wf } from 'fs';
+const { dirname } = require('path');
+const { mkdirSync, writeFile } = require('fs');
 
-export function writeFile(
-    completeFileDistination: string,
-    content: string,
-    successMessage: string = null,
-    writeErrorMessage: string = null
+module.exports = function(
+    completeFileDistination,
+    content,
+    successMessage = null,
+    writeErrorMessage = null
 ) {
     const completeFolderDistination = dirname(completeFileDistination);
 
