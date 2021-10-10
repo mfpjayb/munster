@@ -1,3 +1,4 @@
+const { unlinkSync, unlink } = require('fs');
 const Listr = require('listr');
 const { resolve } = require('path');
 const copyFolder = require('../../utils/copy-folder');
@@ -9,7 +10,11 @@ module.exports = function(projectName) {
     const tasks = new Listr([
         {
             title: 'Creating new MunsterJs project ...',
-            task: () => copyFolder(source, distination, () => {})
+            task: () => {
+                copyFolder(source, distination, () => {
+                    unlinkSync(resolve(distination, '.git'));
+                });
+            }
         },
         {
             title: 'Installing dependencies ...',
