@@ -1,11 +1,11 @@
-import { red, green } from "chalk";
-import { existsSync } from 'fs';
-import { join, resolve } from 'path';
-import { writeFile } from "../../../utils/write-file";
-import { componentTextGenerator } from "./component-text-generator";
-import { getFilename } from "./get-filename";
+const { red, green } = require("chalk");
+const { existsSync } = require('fs');
+const { join, resolve } = require('path');
+const { writeFile } = require("../../../utils/write-file");
+const { componentTextGenerator } = require("./component-text-generator");
+const { getFilename } = require("./get-filename");
 
-export function generateComponent(filepath: string, appConfig: any) {
+module.exports = function(filepath, appConfig) {
     const filename = getFilename(filepath);
     const componentText = componentTextGenerator(filename);
     const appFileDistination = join(appConfig.appDir, `${filepath}.component.tsx`);

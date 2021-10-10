@@ -1,8 +1,8 @@
-import { resolve } from 'path';
-import { existsSync } from 'fs';
-import { red } from 'chalk';
+const { resolve } = require('path');
+const { existsSync } = require('fs');
+const { red } = require('chalk');
 
-export function getAppConfig(errorMessage: string) {
+module.exports = function(errorMessage) {
     const currentDir = global.process.cwd();
     const appJsonPath = resolve(currentDir, 'munster-app.json');
     if (!existsSync(appJsonPath)) {

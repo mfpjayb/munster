@@ -1,3 +1,3 @@
-export function kebabToCamel(str: string): string {
+module.exports = function(str) {
     return str.replace(/-./g, x=>x.toUpperCase()[1]);
 }
