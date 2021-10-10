@@ -1,6 +1,7 @@
-import { container } from "tsyringe";
+import { container, injectable } from "tsyringe";
 
 export function initModule(Module: any, parentModule: any): any {
+    injectable()(Module);
     const module: any = container.resolve(Module);
     module.initChildModules();
     module.declareComponents();

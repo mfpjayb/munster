@@ -85,9 +85,10 @@ export function Module(config: IModuleConfig) {
         }
 
         Target.prototype.declareComponent = function(Component: any) {
+            injectable()(Component);
             defineWebComponent(Component, this);
         }
 
-        return injectable()(Target);
+        return Target;
     }
 }

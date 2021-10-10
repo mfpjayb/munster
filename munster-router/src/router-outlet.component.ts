@@ -1,4 +1,5 @@
 import { ComponentExtensions, Component, initModule } from "@munster/core";
+import { navigate } from "./tools/navigate";
 import { ROUTER_DIRECTIVE_DATA_KEY } from "./router.directive";
 import { IRoute, MODULE_ROUTE_DATA_KEY } from "./router.module";
 import { RouterService } from "./router.service";
@@ -33,7 +34,6 @@ export class RouterOutletComponent {
     constructor(private routerService: RouterService) { }
 
     $connected() {
-        console.log(this);
         this.routerService.addEvaluateItem(this.evaluate.bind(this));
         this.evaluate();
     }
@@ -81,10 +81,21 @@ export class RouterOutletComponent {
         });
 
         Promise.all(promises).then(result => {
+            let redirect = false;
             result.forEach(route => {
-                this.routes[route.index] = route.route;
+                if (!redirect) {
+                    if (route.route.redirectTo && route.route.show) {
+                        setTimeout(() => {
+                            navigate(route.route.redirectTo);
+                        });
+                        redirect = true;
+                    }
+                    this.routes[route.index] = route.route;
+                }
             });
-            ((this as any).getComponentWrapper() as any).$apply();
+            if (!redirect) {
+                ((this as any).getComponentWrapper() as any).$apply();
+            }
         });
     }
 
@@ -92,15 +103,17 @@ export class RouterOutletComponent {
         let elements = [];
 
         for(let ii = 0; ii < this.routes.length; ii++) {
-            elements.push(
-                i(
-                    () => this.routes[ii].show,
-                    () => c(
-                        this.routes[ii].component.selector, {}, [], [['router', 'data', () => (this.routes[ii].children || [])]],
-                        this.routes[ii].rawComponent
+            if (!this.routes[ii].redirectTo) {
+                elements.push(
+                    i(
+                        () => this.routes[ii].show,
+                        () => c(
+                            this.routes[ii].component.selector, {}, [], [['router', 'data', () => (this.routes[ii].children || [])]],
+                            this.routes[ii].rawComponent
+                        )
                     )
-                )
-            );
+                );
+            }
         }
 
         return e('fragment', {}, elements);

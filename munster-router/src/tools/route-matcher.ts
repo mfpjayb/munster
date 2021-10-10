@@ -20,7 +20,7 @@ export function routeMatcher(route: IRoute): IRouteMatcherResult {
     }
 
     // check if exact
-    if (route.exact) {
+    if (route.exact || route.redirectTo) {
         // check if the length are not equal, if yes, then auto inactive
         if (routePathArr.length !== windowUrlArr.length) {
             return inactive;

@@ -10,6 +10,6 @@ export function Component(config: IComponentConfig) {
         Target.selector = config.selector;
         Target.prototype.getComponentWrapper = null;
 
-        return injectable()(Target);
+        return Target;
     }
 }

@@ -10,6 +10,7 @@ export interface IRoute {
     exact?: boolean;
     module?: () => Promise<any>;
     formattedPath?: string;
+    redirectTo?: string;
 }
 
 export const MODULE_ROUTE_DATA_KEY = 'ROUTER_ROUTES';
