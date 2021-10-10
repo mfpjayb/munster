@@ -3,17 +3,17 @@ import { initModule } from "../module/init-module";
 
 export function renderApp(target: HTMLElement | null, RootModule: any): void {
     const module = initModule(RootModule, null);
-    const selector = module.getBootstrap().selector;
-    const Root = customElements.get(selector);
+    const bootstraped = module.getBootstrap();
+    const Root = customElements.get(bootstraped.selector);
 
     const config: IComponentHutchConfig = {
-        component: module.getBootstrap(),
-        selector,
+        component: bootstraped,
+        selector: bootstraped.selector,
         parentComponentWrapper: null,
         module
     };
 
-    const root = new Root(config);
-
-    target.replaceWith(root);
+    if (target) {
+        target.replaceWith(new Root(config));
+    }
 }
