@@ -1,0 +1,3 @@
+[submodule "munster-cli/src/assets/munster-starter-app"]
+	path = munster-cli/src/assets/munster-starter-app
+	url = https://github.com/mfpjayb/munster-starter-app.git
