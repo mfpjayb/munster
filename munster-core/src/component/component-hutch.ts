@@ -98,7 +98,7 @@ export function componentHutch(Component: any): CustomElementConstructor {
 
         private callHook(name: string): void {
             if (this.component[name]) {
-                this.component[name]();
+                this.component[name].bind(this.component)();
             }
         }
 

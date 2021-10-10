@@ -1,6 +1,6 @@
 {
   "name": "@munster/router",
-  "version": "0.0.74",
+  "version": "0.0.82",
   "description": "",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -21,9 +21,8 @@
     "parcel": "^2.0.0-nightly.873",
     "typescript": "^4.4.3"
   },
-  "dependencies": {
-    "@munster/core": "^0.0.77",
-    "path": "^0.12.7",
-    "reflect-metadata": "^0.1.13"
-  }
+  "peerDependencies": {
+    "@munster/core": "^0.0.85"
+  },
+  "dependencies": {}
 }

@@ -1,4 +1,4 @@
-import { Service } from "munster-core";
+import { Service } from "@munster/core";
 
 @Service()
 export class RouterService {

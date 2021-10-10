@@ -1,4 +1,4 @@
-import { container, Lifecycle } from "tsyringe"
+import { singleton, injectable } from "tsyringe"
 
 interface IServiceConfig {
     singleton?: boolean;
@@ -7,11 +7,9 @@ interface IServiceConfig {
 export function Service(config: IServiceConfig = {}) {
     return function(Target: any) {
         if (config.singleton || config.singleton === undefined) {
-            container.register(Target, { useClass: Target }, { lifecycle: Lifecycle.Singleton });
-            return Target;
+            return singleton()(Target);
         } else {
-            container.register(Target, { useClass: Target });
-            return Target;
+            return injectable()(Target);
         }
     }
 }

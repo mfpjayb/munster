@@ -1,4 +1,4 @@
-import { container } from "tsyringe";
+import { injectable } from "tsyringe";
 
 interface IComponentConfig {
     selector: string;
@@ -6,15 +6,10 @@ interface IComponentConfig {
 
 export function Component(config: IComponentConfig) {
     return function(Target: any) {
-        const NewClass: typeof Target = class extends Target {
 
-            public static selector: string = config.selector;
-            public getComponentWrapper: () => any = null;
+        Target.selector = config.selector;
+        Target.prototype.getComponentWrapper = null;
 
-        };
-
-        container.register(NewClass, { useClass: NewClass });
-
-        return NewClass;
+        return injectable()(Target);
     }
 }

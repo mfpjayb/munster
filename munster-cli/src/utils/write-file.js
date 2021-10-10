@@ -10,7 +10,7 @@ module.exports = function(
     const completeFolderDistination = dirname(completeFileDistination);
 
     mkdirSync(completeFolderDistination, { recursive: true });
-    wf(completeFileDistination, content, function(error) {
+    writeFile(completeFileDistination, content, function(error) {
         if (error && writeErrorMessage) {
             console.log(writeErrorMessage);
         } else if (!error && successMessage) {

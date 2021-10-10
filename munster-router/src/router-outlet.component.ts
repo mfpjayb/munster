@@ -26,15 +26,14 @@ export class RouterFragmentComponent extends ComponentExtensions {
 @Component({
     selector: 'router-outlet'
 })
-export class RouterOutletComponent extends ComponentExtensions {
+export class RouterOutletComponent {
 
     private routes: IExtendedRoute[] = [];
 
-    constructor(private routerService: RouterService) {
-        super();
-    }
+    constructor(private routerService: RouterService) { }
 
     $connected() {
+        console.log(this);
         this.routerService.addEvaluateItem(this.evaluate.bind(this));
         this.evaluate();
     }
@@ -45,12 +44,12 @@ export class RouterOutletComponent extends ComponentExtensions {
 
     $init() {
         this.routes = [];
-        const moduleRouterData = this.getComponentWrapper().getModule().getData(MODULE_ROUTE_DATA_KEY);
+        const moduleRouterData = (this as any).getComponentWrapper().getModule().getData(MODULE_ROUTE_DATA_KEY);
         if (moduleRouterData) {
             this.routes = [...moduleRouterData];
-            this.getComponentWrapper().getModule().setData(MODULE_ROUTE_DATA_KEY, null);
+            (this as any).getComponentWrapper().getModule().setData(MODULE_ROUTE_DATA_KEY, null);
         } else {
-            const parentComponentRouterData = this.getComponentWrapper().getParentComponentWrapper().getData(ROUTER_DIRECTIVE_DATA_KEY);
+            const parentComponentRouterData = (this as any).getComponentWrapper().getParentComponentWrapper().getData(ROUTER_DIRECTIVE_DATA_KEY);
             this.routes = [...parentComponentRouterData || []];
         }
     }
@@ -85,7 +84,7 @@ export class RouterOutletComponent extends ComponentExtensions {
             result.forEach(route => {
                 this.routes[route.index] = route.route;
             });
-            (this.getComponentWrapper() as any).$apply();
+            ((this as any).getComponentWrapper() as any).$apply();
         });
     }
 
