@@ -1,4 +1,4 @@
-const { unlinkSync, unlink } = require('fs');
+const { unlinkSync } = require('fs');
 const Listr = require('listr');
 const { resolve } = require('path');
 const copyFolder = require('../../utils/copy-folder');
