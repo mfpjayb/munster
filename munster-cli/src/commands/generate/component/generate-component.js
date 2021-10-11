@@ -9,8 +9,10 @@ const getFilename = require("./get-filename");
 module.exports = function(filepath, appConfig) {
     const filename = getFilename(filepath);
     const componentText = componentTextGenerator(filename);
-    const appFileDistination = join(appConfig.appDir, `${filepath}.component.tsx`);
+    const appFileDistination = join(appConfig.appDir, `${filepath}/${filename}.component.tsx`);
+    const appFileDistinationStyle = join(appConfig.appDir, `${filepath}/${filename}.component.scss`);
     const completeFileDistination = resolve(global.process.cwd(), appFileDistination);
+    const completeFileDistinationStyle = resolve(global.process.cwd(), appFileDistinationStyle);
 
     const tasks = new Listr([
         {
@@ -19,9 +21,12 @@ module.exports = function(filepath, appConfig) {
                 if (existsSync(completeFileDistination)) {
                     console.log(red(`The file ${appFileDistination} already exists. Component creation failed.`));
                 } else {
-                    const successMessage = `${green('CREATE')} ${appFileDistination}`;
                     const errorMessage = `${red('Creating component failed.')}`;
+                    const successMessage = `${green('CREATE')} ${appFileDistination}`;
+                    const successMessageStyle = `${green('CREATE')} ${appFileDistinationStyle}`;
+
                     writeFile(completeFileDistination, componentText, successMessage, errorMessage);
+                    writeFile(completeFileDistinationStyle, '', successMessageStyle, errorMessage);
                 }
             }
         }

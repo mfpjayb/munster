@@ -12,7 +12,6 @@ module.exports = function(name) {
 @Module({
     components: [ ],
 })
-export class ${className}Module { }
-    `;
+export class ${className}Module { }`;
 }
 

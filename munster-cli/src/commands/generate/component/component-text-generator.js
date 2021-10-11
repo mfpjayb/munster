@@ -8,6 +8,7 @@ const kebabToCamel = require("../../../utils/kebab-to-camel");
 module.exports = function(name) {
     const className = kebabToCamel(`-${name}`);
     return `import { Component } from "@munster/core";
+import './${name}.component.scss';
 
 @Component({
     selector: 'app-${name}'
@@ -18,6 +19,5 @@ export class ${className}Component {
         return <h1>${className}Component Works!</h1>
     }
 
-}
-    `;
+}`;
 }

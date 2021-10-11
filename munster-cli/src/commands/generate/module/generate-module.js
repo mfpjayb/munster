@@ -10,7 +10,7 @@ module.exports = function(filepath, appConfig) {
     const filename = getFilename(filepath);
     const moduleText = moduleTextGenerator(filename);
 
-    const appFileDistination = join(appConfig.appDir, `${filepath}.module.ts`);
+    const appFileDistination = join(appConfig.appDir, `${filepath}/${filename}.module.ts`);
     const completeFileDistination = resolve(global.process.cwd(), appFileDistination);
 
     const tasks = new Listr([
