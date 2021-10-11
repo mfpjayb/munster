@@ -1,5 +1,3 @@
-import { injectable } from "tsyringe";
-
 interface IComponentConfig {
     selector: string;
 }

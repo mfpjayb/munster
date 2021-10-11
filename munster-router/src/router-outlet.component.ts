@@ -9,6 +9,8 @@ declare const e: any;
 declare const c: any;
 declare const i: any;
 
+const MODULE_PARENT_URL_DATA = 'routerUrl';
+
 interface IExtendedRoute extends IRoute {
     show: boolean;
     rawComponent: any;
@@ -30,6 +32,7 @@ export class RouterFragmentComponent extends ComponentExtensions {
 export class RouterOutletComponent {
 
     private routes: IExtendedRoute[] = [];
+    private parentUrl: string = '';
 
     constructor(private routerService: RouterService) { }
 
@@ -44,10 +47,12 @@ export class RouterOutletComponent {
 
     $init() {
         this.routes = [];
-        const moduleRouterData = (this as any).getComponentWrapper().getModule().getData(MODULE_ROUTE_DATA_KEY);
+        const module = (this as any).getComponentWrapper().getModule();
+        const moduleRouterData = module.getData(MODULE_ROUTE_DATA_KEY);
         if (moduleRouterData) {
             this.routes = [...moduleRouterData];
-            (this as any).getComponentWrapper().getModule().setData(MODULE_ROUTE_DATA_KEY, null);
+            this.parentUrl = module.getData(MODULE_PARENT_URL_DATA) || '';
+            module.setData(MODULE_ROUTE_DATA_KEY, null);
         } else {
             const parentComponentRouterData = (this as any).getComponentWrapper().getParentComponentWrapper().getData(ROUTER_DIRECTIVE_DATA_KEY);
             this.routes = [...parentComponentRouterData || []];
@@ -59,9 +64,16 @@ export class RouterOutletComponent {
 
         this.routes.forEach((route, index) => {
             promises.push(new Promise((resolve) => {
-                const result = routeMatcher(route);
+                const result = routeMatcher(route, this.parentUrl);
                 if (result.active && route.module) {
                     route.module().then(Module => {
+
+                        const originalFunction = Module.prototype.initChildModules;
+                        const self = this;
+                        Module.prototype.initChildModules = function() {
+                            this.setData(MODULE_PARENT_URL_DATA, `${self.parentUrl}/${route.path}`);
+                            originalFunction.apply(this, [...arguments]);
+                        };
 
                         const module = initModule(Module, null);
                         const component = class extends RouterFragmentComponent {
@@ -108,7 +120,10 @@ export class RouterOutletComponent {
                     i(
                         () => this.routes[ii].show,
                         () => c(
-                            this.routes[ii].component.selector, {}, [], [['router', 'data', () => (this.routes[ii].children || [])]],
+                            this.routes[ii].component.selector,
+                            {},
+                            [],
+                            [['router', 'data', () => (this.routes[ii].children || [])]],
                             this.routes[ii].rawComponent
                         )
                     )

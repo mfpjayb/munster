@@ -8,9 +8,10 @@ const inactive: IRouteMatcherResult = {
     active: false
 };
 
-export function routeMatcher(route: IRoute): IRouteMatcherResult {
+export function routeMatcher(route: IRoute, parentUrl: string): IRouteMatcherResult {
     const windowUrl = window.location.pathname;
-    const routePathArr: string[] = route.formattedPath.split('/').filter(item => !!item);
+    const path = `${parentUrl}/${route.formattedPath}`;
+    const routePathArr: string[] = path.split('/').filter(item => !!item);
     const windowUrlArr: string[] = windowUrl.split('/').filter(item => !!item);
 
 
