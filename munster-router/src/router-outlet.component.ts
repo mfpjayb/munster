@@ -55,7 +55,8 @@ export class RouterOutletComponent {
             module.setData(MODULE_ROUTE_DATA_KEY, null);
         } else {
             const parentComponentRouterData = (this as any).getComponentWrapper().getParentComponentWrapper().getData(ROUTER_DIRECTIVE_DATA_KEY);
-            this.routes = [...parentComponentRouterData || []];
+            this.routes = [...parentComponentRouterData?.children || []];
+            this.parentUrl = parentComponentRouterData?.parentUrl || '';
         }
     }
 
@@ -65,13 +66,16 @@ export class RouterOutletComponent {
         this.routes.forEach((route, index) => {
             promises.push(new Promise((resolve) => {
                 const result = routeMatcher(route, this.parentUrl);
+                // console.log(`${this.parentUrl}/${route.formattedPath}`, window.location.pathname, result.active);
                 if (result.active && route.module) {
                     route.module().then(Module => {
 
                         const originalFunction = Module.prototype.initChildModules;
                         const self = this;
                         Module.prototype.initChildModules = function() {
-                            this.setData(MODULE_PARENT_URL_DATA, `${self.parentUrl}/${route.path}`);
+                            const parentUrl = `${self.parentUrl}/${route.formattedPath}`;
+                            this.setData(MODULE_PARENT_URL_DATA, parentUrl);
+                            console.log(parentUrl);
                             originalFunction.apply(this, [...arguments]);
                         };
 
@@ -116,6 +120,7 @@ export class RouterOutletComponent {
 
         for(let ii = 0; ii < this.routes.length; ii++) {
             if (!this.routes[ii].redirectTo) {
+                const parentUrl = `${this.parentUrl}/${this.routes[ii].formattedPath}`;
                 elements.push(
                     i(
                         () => this.routes[ii].show,
@@ -123,7 +128,10 @@ export class RouterOutletComponent {
                             this.routes[ii].component.selector,
                             {},
                             [],
-                            [['router', 'data', () => (this.routes[ii].children || [])]],
+                            [['router', 'data', () => ({
+                                children: (this.routes[ii].children || []),
+                                parentUrl
+                            })]],
                             this.routes[ii].rawComponent
                         )
                     )
