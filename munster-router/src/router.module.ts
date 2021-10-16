@@ -2,6 +2,7 @@ import { ModuleExtensions, Module } from "@munster/core";
 import { RouterDirective } from "./router.directive";
 import { RouterFragmentComponent, RouterOutletComponent } from "./router-outlet.component";
 import { formatRoutePaths } from "./tools/format-route-paths";
+import { Guard } from "./guard/guard";
 
 export interface IRoute {
     path: string;
@@ -11,6 +12,7 @@ export interface IRoute {
     module?: () => Promise<any>;
     formattedPath?: string;
     redirectTo?: string;
+    guards?: typeof Guard[];
 }
 
 export const MODULE_ROUTE_DATA_KEY = 'ROUTER_ROUTES';

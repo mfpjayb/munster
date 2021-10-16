@@ -72,8 +72,8 @@ export class RouterOutletComponent {
         const promises: Promise<any>[] = [];
 
         this.routes.forEach((route, index) => {
-            promises.push(new Promise((resolve) => {
-                const result = routeMatcher(route, this.parentUrl);
+            promises.push(new Promise(async (resolve) => {
+                const result = await routeMatcher(route, this.parentUrl);
                 if (result.active && route.module) {
                     route.module().then(Module => {
 

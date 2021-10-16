@@ -8,7 +8,7 @@ const inactive: IRouteMatcherResult = {
     active: false
 };
 
-export function routeMatcher(route: IRoute, parentUrl: string): IRouteMatcherResult {
+export async function routeMatcher(route: IRoute, parentUrl: string): Promise<IRouteMatcherResult> {
     const windowUrl = window.location.pathname;
     const path = `${parentUrl}/${route.formattedPath}`;
     const routePathArr: string[] = path.split('/').filter(item => !!item);
@@ -33,9 +33,41 @@ export function routeMatcher(route: IRoute, parentUrl: string): IRouteMatcherRes
         return inactive;
     }
 
+    const guardPassed = await processGuards(route);
+    if (!guardPassed) {
+        return {
+            active: false
+        }
+    }
+
     return {
         active: true
     };
+}
+
+async function processGuards(route: IRoute): Promise<boolean> {
+    return new Promise(mainResolve => {
+        if (route.guards) {
+            const promises = [];
+            route.guards.forEach(Guard => {
+                promises.push(new Promise(async resolve => {
+                    const guard = new Guard();
+                    const canActivate = await guard.canActivate();
+                    resolve(canActivate);
+                }));
+            });
+
+            Promise.all(promises).then(canActivates => {
+                if (canActivates.indexOf(false) > -1) {
+                    mainResolve(false);
+                } else {
+                    mainResolve(true);
+                }
+            });
+        } else {
+            mainResolve(true);
+        }
+    });
 }
 
 function matchPaths(routePathArr: string[], windowUrlArr: string[]): boolean {
