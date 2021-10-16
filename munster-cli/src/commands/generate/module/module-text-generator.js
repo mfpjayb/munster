@@ -7,11 +7,12 @@ const kebabToCamel = require("../../../utils/kebab-to-camel");
  */
 module.exports = function(name) {
     const className = kebabToCamel(`-${name}`);
-    return `import { Module } from "@munster/core";
+    return `import { CommonModule, Module } from "@munster/core";
 
 @Module({
-    components: [ ],
+    modules: [
+        CommonModule
+    ]
 })
 export class ${className}Module { }`;
 }
-

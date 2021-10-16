@@ -1,6 +1,6 @@
 {
   "name": "@munster/router",
-  "version": "0.0.100",
+  "version": "0.0.102",
   "description": "",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
