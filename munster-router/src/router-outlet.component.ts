@@ -33,6 +33,8 @@ export class RouterOutletComponent {
 
     private routes: IExtendedRoute[] = [];
     private parentUrl: string = '';
+    private routesBackedUp: boolean = false;
+    private routesBackup: IExtendedRoute[] = null;
 
     constructor(private routerService: RouterService) { }
 
@@ -43,6 +45,10 @@ export class RouterOutletComponent {
 
     $disconnected() {
         this.routerService.removeEvaluateItems(this.evaluate.bind(this));
+        if (this.routesBackedUp) {
+            const module = (this as any).getComponentWrapper().getModule();
+            module.setData(MODULE_ROUTE_DATA_KEY, this.routesBackup);
+        }
     }
 
     $init() {
@@ -53,6 +59,8 @@ export class RouterOutletComponent {
             this.routes = [...moduleRouterData];
             this.parentUrl = module.getData(MODULE_PARENT_URL_DATA) || '';
             module.setData(MODULE_ROUTE_DATA_KEY, null);
+            this.routesBackup = [...moduleRouterData];
+            this.routesBackedUp = true;
         } else {
             const parentComponentRouterData = (this as any).getComponentWrapper().getParentComponentWrapper().getData(ROUTER_DIRECTIVE_DATA_KEY);
             this.routes = [...parentComponentRouterData?.children || []];
@@ -66,7 +74,6 @@ export class RouterOutletComponent {
         this.routes.forEach((route, index) => {
             promises.push(new Promise((resolve) => {
                 const result = routeMatcher(route, this.parentUrl);
-                // console.log(`${this.parentUrl}/${route.formattedPath}`, window.location.pathname, result.active);
                 if (result.active && route.module) {
                     route.module().then(Module => {
 
@@ -75,7 +82,6 @@ export class RouterOutletComponent {
                         Module.prototype.initChildModules = function() {
                             const parentUrl = `${self.parentUrl}/${route.formattedPath}`;
                             this.setData(MODULE_PARENT_URL_DATA, parentUrl);
-                            console.log(parentUrl);
                             originalFunction.apply(this, [...arguments]);
                         };
 
