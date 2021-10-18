@@ -10,7 +10,8 @@ const inactive: IRouteMatcherResult = {
 
 export async function routeMatcher(route: IRoute, parentUrl: string): Promise<IRouteMatcherResult> {
     const windowUrl = window.location.pathname;
-    const path = `${parentUrl}/${route.formattedPath}`;
+    const path = `${parentUrl}/${route.path}`;
+    // const path = `${parentUrl}/${route.formattedPath}`;
     const routePathArr: string[] = path.split('/').filter(item => !!item);
     const windowUrlArr: string[] = windowUrl.split('/').filter(item => !!item);
 

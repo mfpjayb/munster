@@ -1,7 +1,7 @@
 import { ModuleExtensions, Module } from "@munster/core";
 import { RouterDirective } from "./router.directive";
 import { RouterFragmentComponent, RouterOutletComponent } from "./router-outlet.component";
-import { formatRoutePaths } from "./tools/format-route-paths";
+// import { formatRoutePaths } from "./tools/format-route-paths";
 import { Guard } from "./guard/guard";
 
 export interface IRoute {
@@ -10,7 +10,7 @@ export interface IRoute {
     children?: IRoute[];
     exact?: boolean;
     module?: () => Promise<any>;
-    formattedPath?: string;
+    // formattedPath?: string;
     redirectTo?: string;
     guards?: typeof Guard[];
 }
@@ -33,7 +33,7 @@ export class RouterModule extends ModuleExtensions {
     public static routes(routes: IRoute[]) {}
 
     public init() {
-        this.routes = formatRoutePaths(this.routes, '');
+        // this.routes = formatRoutePaths(this.routes, '');
         this.getParentModule().setData(MODULE_ROUTE_DATA_KEY, this.routes);
     }
 

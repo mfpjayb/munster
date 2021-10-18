@@ -66,6 +66,9 @@ export class RouterOutletComponent {
             this.routes = [...parentComponentRouterData?.children || []];
             this.parentUrl = parentComponentRouterData?.parentUrl || '';
         }
+        if ((this as any).getComponentWrapper().getAttribute('id')) {
+            console.log(this.parentUrl, this.routes);
+        };
     }
 
     private evaluate(): void {
@@ -80,7 +83,8 @@ export class RouterOutletComponent {
                         const originalFunction = Module.prototype.initChildModules;
                         const self = this;
                         Module.prototype.initChildModules = function() {
-                            const parentUrl = `${self.parentUrl}/${route.formattedPath}`;
+                            // const parentUrl = `${self.parentUrl}/${route.formattedPath}`;
+                            const parentUrl = `${self.parentUrl}/${route.path}`;
                             this.setData(MODULE_PARENT_URL_DATA, parentUrl);
                             originalFunction.apply(this, [...arguments]);
                         };
@@ -126,7 +130,8 @@ export class RouterOutletComponent {
 
         for(let ii = 0; ii < this.routes.length; ii++) {
             if (!this.routes[ii].redirectTo) {
-                const parentUrl = `${this.parentUrl}/${this.routes[ii].formattedPath}`;
+                const parentUrl = `${this.parentUrl}/${this.routes[ii].path}`;
+                // const parentUrl = `${this.parentUrl}/${this.routes[ii].formattedPath}`;
                 elements.push(
                     i(
                         () => this.routes[ii].show,
