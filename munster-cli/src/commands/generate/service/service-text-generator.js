@@ -3,16 +3,15 @@ const kebabToCamel = require("../../../utils/kebab-to-camel");
 /**
  * 
  * @param string the name of the file generated. ex. format "login-service"
- * @returns the string to be written to the new generated module file
+ * @returns the string to be written to the new generated service file
  */
 module.exports = function(name) {
     const className = kebabToCamel(`-${name}`);
-    return `import { CommonModule, Module } from "@munster/core";
+    return `import { Service } from "@munster/core";
 
-@Module({
-    modules: [
-        CommonModule
-    ]
-})
-export class ${className}Module { }`;
+@Service()
+export class ${className}Service {
+
+}
+`;
 }

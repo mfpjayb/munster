@@ -261,10 +261,10 @@
   resolved "https://registry.npmjs.org/@iarna/toml/-/toml-2.2.5.tgz"
   integrity sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==
 
-"@munster/core@^0.0.90":
-  version "0.0.90"
-  resolved "https://registry.yarnpkg.com/@munster/core/-/core-0.0.90.tgz#769d8023f012616594278cf61334464246c5de2b"
-  integrity sha512-n7O3G4KUYXsveYBuWIk39plYasqX9DDzFTVTIIk3xciJpzFgnR9ISdT+Tse38odBf8wVVycHIJfuIckktnSgZw==
+"@munster/core@^0.0.94":
+  version "0.0.94"
+  resolved "https://registry.yarnpkg.com/@munster/core/-/core-0.0.94.tgz#6bd49f87af78903a1e9479907e1c2c22fb6830a1"
+  integrity sha512-Bq1a4+nIBnI2MDPtRK4paR+ttvWUSegh/zPDnSxPl6034x51zOI2it6pYQWu4NwBi0LwvEco0ISoLT9t0zDujA==
   dependencies:
     tsyringe "^4.6.0"
 

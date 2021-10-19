@@ -31,6 +31,7 @@ export function componentHutch(Component: any): CustomElementConstructor {
         private parentComponentWrapper: any;
         private data: object = {};
         private module: any;
+        private destroyArray: Function[] = [];
 
         constructor(componentConfig: IComponentHutchConfig) {
             super();
@@ -56,7 +57,13 @@ export function componentHutch(Component: any): CustomElementConstructor {
         }
 
         disconnectedCallback(): void {
+            this.destroyArray.forEach(item => item());
+            this.destroyArray = [];
             this.callHook('$disconnected');
+        }
+
+        public addDestroyArray(item: Function): void {
+            this.destroyArray.push(item);
         }
 
         public setData(key: string, value: any) {

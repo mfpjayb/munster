@@ -9,24 +9,24 @@ const getFilename = require("./get-filename");
 module.exports = function(filepath, appConfig) {
     const filename = getFilename(filepath);
     const componentText = componentTextGenerator(filename);
-    const appFileDistination = join(appConfig.appDir, `${filepath}/${filename}.component.tsx`);
-    const appFileDistinationStyle = join(appConfig.appDir, `${filepath}/${filename}.component.scss`);
-    const completeFileDistination = resolve(global.process.cwd(), appFileDistination);
-    const completeFileDistinationStyle = resolve(global.process.cwd(), appFileDistinationStyle);
+    const appFileDestination = join(appConfig.appDir, `${filepath}/${filename}.component.tsx`);
+    const appFileDestinationStyle = join(appConfig.appDir, `${filepath}/${filename}.component.scss`);
+    const completeFileDestination = resolve(global.process.cwd(), appFileDestination);
+    const completeFileDestinationStyle = resolve(global.process.cwd(), appFileDestinationStyle);
 
     const tasks = new Listr([
         {
             title: 'Creating new component ...',
             task: () => {
-                if (existsSync(completeFileDistination)) {
-                    console.log(red(`The file ${appFileDistination} already exists. Component creation failed.`));
+                if (existsSync(completeFileDestination)) {
+                    console.log(red(`The file ${appFileDestination} already exists. Component creation failed.`));
                 } else {
                     const errorMessage = `${red('Creating component failed.')}`;
-                    const successMessage = `${green('CREATE')} ${appFileDistination}`;
-                    const successMessageStyle = `${green('CREATE')} ${appFileDistinationStyle}`;
+                    const successMessage = `${green('CREATE')} ${appFileDestination}`;
+                    const successMessageStyle = `${green('CREATE')} ${appFileDestinationStyle}`;
 
-                    writeFile(completeFileDistination, componentText, successMessage, errorMessage);
-                    writeFile(completeFileDistinationStyle, '', successMessageStyle, errorMessage);
+                    writeFile(completeFileDestination, componentText, successMessage, errorMessage);
+                    writeFile(completeFileDestinationStyle, '', successMessageStyle, errorMessage);
                 }
             }
         }

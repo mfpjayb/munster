@@ -9,7 +9,7 @@ export class ViewDirective extends Directive {
         ref: this.ref.bind(this)
     }
 
-    init() {
+    $init() {
         this.getDirectives().forEach(item => {
             this.mapper[item[0]](item);
         });

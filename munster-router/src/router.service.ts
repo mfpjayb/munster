@@ -1,12 +1,22 @@
-import { Service } from "@munster/core";
+// import { Service, Singleton } from "@munster/core";
 
-@Service()
+// @Service({
+//     singleton: true
+// })
+// @Singleton()
 export class RouterService {
 
-    private evaluateList: Function[] = [];
+    private static instance;
+    public evaluateList: Function[] = [];
 
     constructor() {
+        if (RouterService.instance) {
+            return RouterService.instance;
+        }
+
         this.initializeRouterEvents();
+
+        RouterService.instance = this;
     }
 
     public addEvaluateItem(evaluate: Function) {

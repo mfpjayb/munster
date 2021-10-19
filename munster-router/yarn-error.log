@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\81254880\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @munser/core@latest
+  C:\Program Files\nodejs\node.exe C:\Users\81254880\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @munster/core@latest
 
 PATH: 
-  C:\Users\81254880\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\81254880\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Program Files\dotnet;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn;C:\Users\81254880\AppData\Local\Microsoft\WindowsApps;C:\Users\81254880\AppData\Roaming\npm;C:\Users\81254880\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\81254880\.dotnet\tools;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+  C:\Users\81254880\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\81254880\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Program Files\dotnet;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn;C:\Program Files\MySQL\MySQL Shell 8.0\bin;C:\Users\81254880\AppData\Local\Microsoft\WindowsApps;C:\Users\81254880\AppData\Roaming\npm;C:\Users\81254880\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\81254880\.dotnet\tools;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
 
 Yarn version: 
   1.22.15
@@ -14,22 +14,13 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@munser%2fcore: Not found
-      at Request.params.callback [as _callback] (C:\Users\81254880\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66140:18)
-      at Request.self.callback (C:\Users\81254880\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140885:22)
-      at Request.emit (node:events:390:28)
-      at Request.<anonymous> (C:\Users\81254880\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141857:10)
-      at Request.emit (node:events:390:28)
-      at IncomingMessage.<anonymous> (C:\Users\81254880\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141779:12)
-      at Object.onceWrapper (node:events:509:28)
-      at IncomingMessage.emit (node:events:402:35)
-      at endReadableNT (node:internal/streams/readable:1343:12)
-      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+  Error: getaddrinfo EAI_AGAIN registry.yarnpkg.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:71:26)
 
 npm manifest: 
   {
     "name": "@munster/router",
-    "version": "0.0.87",
+    "version": "0.0.103",
     "description": "",
     "main": "./lib/index.js",
     "types": "./lib/index.d.ts",
@@ -49,9 +40,6 @@ npm manifest:
       "babel-plugin-transform-typescript-metadata": "^0.3.2",
       "parcel": "^2.0.0-nightly.873",
       "typescript": "^4.4.3"
-    },
-    "dependencies": {
-      "@munster/core": "^0.0.89"
     }
   }
 
@@ -322,10 +310,10 @@ Lockfile:
     resolved "https://registry.npmjs.org/@iarna/toml/-/toml-2.2.5.tgz"
     integrity sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==
   
-  "@munster/core@^0.0.89":
-    version "0.0.89"
-    resolved "https://registry.yarnpkg.com/@munster/core/-/core-0.0.89.tgz#7d12b90805b52404abd0951e64928c8868c4674f"
-    integrity sha512-tJ9PM37wopF0goFsItH0lONan6GMH2WotbtvXRe36mO2CZZWJHVT+T6mHgYXtMMmF2F2V4m/b2J8l4+o6Fx5ag==
+  "@munster/core@^0.0.93":
+    version "0.0.93"
+    resolved "https://registry.yarnpkg.com/@munster/core/-/core-0.0.93.tgz#286bd58ed67ed3e9184b8ea863955c0167f1fc4f"
+    integrity sha512-YDmGWI9GK8o6PHLbdFQitZBGmR4gjTCs3pprkyhfMxaRuhqs5noPHb5oEeuCmeewsKUZFVbQrXLrATUpXQTpVg==
     dependencies:
       tsyringe "^4.6.0"
   

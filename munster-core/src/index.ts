@@ -30,3 +30,8 @@ export { ModuleExtensions } from './module/module-extensions';
 export { Module } from './module/module.decorator';
 export { initModule } from './module/init-module';
 export { CommonModule } from './module/common.module';
+
+/**
+ * Request Interceptor
+ */
+export { RequestInterceptor } from './request-interceptor/request-interceptor';

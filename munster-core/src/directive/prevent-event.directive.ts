@@ -3,7 +3,7 @@ import { Directive } from "./directive";
 export class PreventEventDirective extends Directive {
     public static namespace: string = 'on-prevent';
 
-    public init() {
+    public $init() {
         const directives: [string, () => any][] = this.getDirectives();
         const element: Element = this.getElement();
         const component: any = this.getComponent();

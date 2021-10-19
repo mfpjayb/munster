@@ -3,7 +3,8 @@ import { Directive } from "../../directive/directive";
 import { THyperScriptDirective } from "../../hyper-script/hyper-script";
 
 export function applyDirectives(element: Element, directives: THyperScriptDirective[], component: any): void {
-    const moduleDirectives: typeof Directive[] = component.getComponentWrapper().getModule().getDirectives();
+    const getComponentWrapper: any = component.getComponentWrapper();
+    const moduleDirectives: typeof Directive[] = getComponentWrapper.getModule().getDirectives();
     const directiveClassObj = { };
     moduleDirectives.forEach(item => {
         directiveClassObj[item.namespace] = item;
@@ -33,8 +34,7 @@ export function applyDirectives(element: Element, directives: THyperScriptDirect
         directive.getDirectives = () => directivesObj[key];
         directive.getElement = () => element;
         directive.getComponent = () => component;
-        if (directive.init) {
-            directive.init();
-        }
+        directive.$init();
+        getComponentWrapper.addDestroyArray(directive.$destroy.bind(directive));
     });
 }

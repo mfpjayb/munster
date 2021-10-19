@@ -10,4 +10,6 @@ export class Directive {
     getComponent(): any {
         return null;
     }
+    $init() {}
+    $destroy() {}
 }

@@ -1,6 +1,7 @@
 const getAppConfig = require("../../utils/get-app-config");
 const generateComponent = require("./component/generate-component");
 const generateModule = require("./module/generate-module");
+const generateService = require("./service/generate-service");
 
 /**
  * Generate commands
@@ -15,6 +16,9 @@ module.exports = function(type, filename) {
         };
         case 'module': {
             return generateModule(filename, appConfig);
+        };
+        case 'service': {
+            return generateService(filename, appConfig);
         }
     }
 }
