@@ -1,9 +1,3 @@
-// import { Service, Singleton } from "@munster/core";
-
-// @Service({
-//     singleton: true
-// })
-// @Singleton()
 export class RouterService {
 
     private static instance;
