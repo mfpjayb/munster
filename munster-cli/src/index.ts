@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const { program } = require('commander');
-const json = require('../package.json');
-const generateCommand = require('./commands/generate/generate-command');
-const newCommand = require('./commands/new/new-command');
+import { program } from 'commander';
+import json from '../package.json';
+import { generateCommand } from './commands/generate-command';
+import { newCommand } from './commands/new-command';
 
 program.version(json.version).description('Munster JS CLI');
 

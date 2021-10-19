@@ -1,6 +1,6 @@
 **/node_modules
 **/.vscode
 **/.parcel-cache
-munster-cli/lib
+munster-cli/dist
 munster-core/lib
 munster-router/lib

@@ -1,11 +1,13 @@
-const kebabToCamel = require("../../../utils/kebab-to-camel");
+import { getFilename } from "../../tools/get-filename";
+import { kebabToCamel } from "../../tools/kebab-to-camel";
 
 /**
  * 
  * @param string the name of the file generated. ex. format "login-form"
- * @returns the string to be writtedn to the new generated component file
+ * @returns the string to be written to the new generated component file
  */
-module.exports = function(name) {
+export function componentTextGenerator(filepath: string): string {
+    const name = getFilename(filepath);
     const className = kebabToCamel(`-${name}`);
     return `import { Component } from "@munster/core";
 import './${name}.component.scss';
