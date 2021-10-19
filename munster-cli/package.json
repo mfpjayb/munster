@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "tsc --watch -p .",
-    "build": "tsc -p . && ncp ./src/assets ./dist/src/assets"
+    "build": "rm -rfv ./dist && tsc -p . && ncp ./src/assets ./dist/src/assets"
   },
   "keywords": [],
   "author": "",
