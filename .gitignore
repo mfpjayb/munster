@@ -4,3 +4,4 @@
 munster-cli/dist
 munster-core/lib
 munster-router/lib
+munster-di/lib

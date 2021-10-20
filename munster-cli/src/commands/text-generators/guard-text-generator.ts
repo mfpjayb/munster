@@ -9,7 +9,7 @@ import { kebabToCamel } from "../../tools/kebab-to-camel";
 export function guardTextGenerator(filepath: string): string {
     const name = getFilename(filepath);
     const className = kebabToCamel(`-${name}`);
-    return `import { BaseGuard, Guard } from "@munster/core";
+    return `import { BaseGuard, Guard } from "@munster/router";
 
 @Guard()
 export class ${className}Guard extends BaseGuard {
