@@ -1,10 +1,15 @@
 {
-  "name": "munster-di",
-  "version": "1.0.0",
+  "name": "@munster/di",
+  "version": "0.0.1",
   "main": "lib/index.js",
   "license": "MIT",
   "scripts": {
-    "build": "ts-node ./src/index.ts"
+    "build": "ts-node ./src/index.ts",
+    "patch": "npm version patch",
+    "patch-release": "rm -rfv ./lib/* && npm run build && npm run patch && npm publish"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {
     "ts-node": "^10.3.0",

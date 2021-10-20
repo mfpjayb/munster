@@ -1,3 +1,4 @@
+import "reflect-metadata";
 
 export { Injectable } from './decorators/injectable.decorator';
 export { Service } from './decorators/service.decorator';
