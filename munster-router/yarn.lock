@@ -261,12 +261,12 @@
   resolved "https://registry.npmjs.org/@iarna/toml/-/toml-2.2.5.tgz"
   integrity sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==
 
-"@munster/core@^0.0.96":
-  version "0.0.96"
-  resolved "https://registry.yarnpkg.com/@munster/core/-/core-0.0.96.tgz#e78e08a97826d5f74464a2808d1cf47b75aadcea"
-  integrity sha512-oMAEbqzkY4emWnmFW2fQsbJY56jnd70aS9gLYAlimCvH9YAaes6x3fVzgDXmuTSWVcJrOWyIQ3X5GmIHwFOLXQ==
+"@munster/di@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@munster/di/-/di-0.0.4.tgz#086ce7ed8d8553c5539e6ae2a6aafdf174b8dcc9"
+  integrity sha512-Z3J6h7cNWX2QkdRukd8f/t4e4+8uBnQOAbo3/hyTr25X/V+NTlEnETFR0oiZw/TJlTyChZPrjKG0/0q9FPsPVA==
   dependencies:
-    tsyringe "^4.6.0"
+    reflect-metadata "^0.1.13"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -4291,6 +4291,11 @@ readable-stream@^3.0.0, readable-stream@^3.4.0, readable-stream@^3.5.0, readable
     string_decoder "^1.1.1"
     util-deprecate "^1.0.1"
 
+reflect-metadata@^0.1.13:
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.13.tgz#67ae3ca57c972a2aa1642b10fe363fe32d49dc08"
+  integrity sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==
+
 regenerator-runtime@^0.13.7:
   version "0.13.9"
   resolved "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.9.tgz"
@@ -4884,18 +4889,6 @@ tr46@^1.0.1:
   integrity sha1-qLE/1r/SSJUZZ0zN5VujaTtwbQk=
   dependencies:
     punycode "^2.1.0"
-
-tslib@^1.9.3:
-  version "1.14.1"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
-  integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
-
-tsyringe@^4.6.0:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/tsyringe/-/tsyringe-4.6.0.tgz#14915d3d7f0db35e1cf7269bdbf7c440713c8d07"
-  integrity sha512-BMQAZamSfEmIQzH8WJeRu1yZGQbPSDuI9g+yEiKZFIcO46GPZuMOC2d0b52cVBdw1d++06JnDSIIZvEnogMdAw==
-  dependencies:
-    tslib "^1.9.3"
 
 tty-browserify@^0.0.1:
   version "0.0.1"

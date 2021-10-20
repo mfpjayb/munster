@@ -1,7 +1,7 @@
-import { Injectable } from "@munster/core";
+import { Injectable } from "@munster/di";
 
 export function Guard() {
     return function(Target) {
-        return Injectable()(Target);
+        Injectable()(Target);
     }
 }

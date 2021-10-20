@@ -1,4 +1,4 @@
-import { Container } from "../container";
+import { register } from "../actions/register";
 
 interface IInjectableConfig {
     singleton: boolean;
@@ -6,8 +6,7 @@ interface IInjectableConfig {
 
 export function Injectable(config?: IInjectableConfig) {
     return function(Target: any) {
-        const container = new Container();
-        container.register(Target, {
+        register(Target, {
             singleton: (config?.singleton || false)
         });
     };

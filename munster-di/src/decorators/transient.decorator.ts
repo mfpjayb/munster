@@ -1,9 +1,8 @@
-import { Container } from "../container";
+import { register } from "../actions/register";
 
 export function Transient() {
     return function(Target: any) {
-        const container = new Container();
-        container.register(Target, {
+        register(Target, {
             singleton: false
         });
     };

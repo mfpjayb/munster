@@ -9,7 +9,7 @@ import { kebabToCamel } from "../../tools/kebab-to-camel";
 export function serviceTextGenerator(filepath: string): string {
     const name = getFilename(filepath);
     const className = kebabToCamel(`-${name}`);
-    return `import { Service } from "@munster/core";
+    return `import { Service } from "@munster/di";
 
 @Service()
 export class ${className}Service {

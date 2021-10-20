@@ -1,18 +1,16 @@
-import { Container } from "../container";
+import { register } from "../actions/register";
 
 interface IServiceConfig {
-    singleton: boolean;
+    singleton?: boolean;
 }
 
-export function Service(config?: IServiceConfig) {
+export function Service(config: IServiceConfig = {}) {
     return function(Target: any) {
-        const container = new Container();
-
         if (config?.singleton === undefined) {
             config.singleton = true;
         }
 
-        container.register(Target, {
+        register(Target, {
             singleton: config.singleton
         });
     };
