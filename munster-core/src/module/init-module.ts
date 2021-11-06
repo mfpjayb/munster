@@ -1,8 +1,8 @@
-import { container, injectable } from "tsyringe";
+import { resolve, Injectable } from "@munster/di";
 
 export function initModule(Module: any, parentModule: any): any {
-    injectable()(Module);
-    const module: any = container.resolve(Module);
+    Injectable()(Module);
+    const module: any = resolve(Module);
     module.initChildModules();
     module.declareComponents();
     module.getParentModule = () => parentModule;

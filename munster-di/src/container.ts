@@ -6,7 +6,7 @@ interface IContainer {
 
 export class Container {
 
-    private static instance;
+    private static instance: Container;
 
     private data: Map<any, IContainer> = new Map();
 
@@ -18,21 +18,21 @@ export class Container {
         Container.instance = this;
     }
 
-    register(Target: any, option: { singleton: boolean }) {
-        this.data.set(Target, {
+    register(Target: any, option: { singleton: boolean }, key: string = null) {
+        const selector = key || Target;
+        this.data.set(selector, {
             singleton: option.singleton,
             instance: null,
             target: Target
         });
     }
 
-    resolve(Target: any) {
+    resolve(Target: any, key: string = null) {
+        const selector = key || Target;
 
-        //Get constructor parameters
-        const tokens = Reflect.getMetadata('design:paramtypes', Target) || [];
+        const containerData: IContainer = this.data.get(selector);
+        const tokens = Reflect.getMetadata('design:paramtypes', containerData.target) || [];
         const injectedInstances = tokens.map((token: any) => this.resolve(token))
-
-        const containerData: IContainer = this.data.get(Target);
 
         if (containerData) {
             if (!containerData.singleton) {
@@ -40,7 +40,7 @@ export class Container {
             } else {
                 if (!containerData.instance) {
                     containerData.instance = new containerData.target(...injectedInstances);
-                    this.data.set(Target, containerData);
+                    this.data.set(selector, containerData);
                 }
                 return containerData.instance;
             }
@@ -48,7 +48,8 @@ export class Container {
 
     }
 
-    unregister(Target: any) {
-        this.data.delete(Target);
+    unregister(Target: any, key: string = null) {
+        const selector = key || Target;
+        this.data.delete(selector);
     }
 }

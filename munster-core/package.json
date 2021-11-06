@@ -1,15 +1,16 @@
 {
   "name": "@munster/core",
-  "version": "0.0.98",
+  "version": "0.0.110",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "parcel build ./src/index.ts",
+    "ts-build": "tsc -p .",
     "major": "npm version major",
     "minor": "npm version minor",
     "patch": "npm version patch",
-    "patch-release": "rm -rfv ./lib/* && npm run build && npm run patch && npm publish"
+    "patch-release": "rm -rfv ./lib/* && npm run ts-build && npm run patch && npm publish"
   },
   "keywords": [],
   "author": "",
@@ -23,8 +24,7 @@
     "parcel": "^2.0.0-nightly.867",
     "typescript": "^4.4.3"
   },
-  "dependencies": {
-    "@munster/di": "^0.0.1",
-    "tsyringe": "^4.6.0"
+  "peerDependencies": {
+    "@munster/di": "^0.0.10"
   }
 }

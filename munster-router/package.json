@@ -1,14 +1,15 @@
 {
   "name": "@munster/router",
-  "version": "0.0.116",
+  "version": "0.0.121",
   "description": "",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
     "build": "parcel build ./src/index.ts",
+    "ts-build": "tsc -p .",
     "dev-link": "npm link munster-core",
     "patch": "npm version patch",
-    "patch-release": "rm -rfv ./lib/* && npm run build && npm run patch && npm publish"
+    "patch-release": "rm -rfv ./lib/* && npm run ts-build && npm run patch && npm publish"
   },
   "keywords": [],
   "author": "",
@@ -22,7 +23,7 @@
     "typescript": "^4.4.3"
   },
   "peerDependencies": {
-    "@munster/core": "^0.0.100",
-    "@munster/di": "^0.0.4"
+    "@munster/core": "^0.0.110",
+    "@munster/di": "^0.0.10"
   }
 }

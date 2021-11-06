@@ -261,10 +261,15 @@
   resolved "https://registry.npmjs.org/@iarna/toml/-/toml-2.2.5.tgz"
   integrity sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==
 
-"@munster/di@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@munster/di/-/di-0.0.4.tgz#086ce7ed8d8553c5539e6ae2a6aafdf174b8dcc9"
-  integrity sha512-Z3J6h7cNWX2QkdRukd8f/t4e4+8uBnQOAbo3/hyTr25X/V+NTlEnETFR0oiZw/TJlTyChZPrjKG0/0q9FPsPVA==
+"@munster/core@^0.0.110":
+  version "0.0.110"
+  resolved "https://registry.yarnpkg.com/@munster/core/-/core-0.0.110.tgz#5bd2b6576e142d2e6ee8df06a9d4019c63182d85"
+  integrity sha512-LuTpIlEh2eyWMfZYy90Hf4Mh4m56GElN1EEiWm9RxmhWKHsiorjIWpD55CRQ1+kG7PO45xA1dJ9RcI+BBr1OVQ==
+
+"@munster/di@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@munster/di/-/di-0.0.10.tgz#12a19c53aa8bbbe493c5c2f987ac4ac2d03e9554"
+  integrity sha512-YeK1Oi+dXfcXqCW26YxoMg/TmjuvgYfIOrbcwR15IdsecxpHIVJPCBAqCmv2E9p+eXI5SwgU28zxDrunqkVlkQ==
   dependencies:
     reflect-metadata "^0.1.13"
 

@@ -12,13 +12,6 @@ export { setupApp } from './app/setup-app';
 export { renderApp } from './app/render-app';
 
 /**
- * Decorators
- */
-export { Injectable } from './decorators/injectable.decorator';
-export { Service } from './decorators/service.decorator';
-export { Singleton } from './decorators/singleton.decorator';
-
-/**
  * Directives
  */
 export { Directive } from './directive/directive';

@@ -1,4 +1,4 @@
-import { injectable } from "tsyringe";
+import { register } from "@munster/di";
 import { defineWebComponent } from "../component/define-web-component";
 import { Directive } from "../directive/directive";
 import { initModule } from "./init-module";
@@ -85,7 +85,6 @@ export function Module(config: IModuleConfig) {
         }
 
         Target.prototype.declareComponent = function(Component: any) {
-            injectable()(Component);
             defineWebComponent(Component, this);
         }
 

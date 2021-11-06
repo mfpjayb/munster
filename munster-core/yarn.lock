@@ -261,10 +261,10 @@
   resolved "https://registry.yarnpkg.com/@iarna/toml/-/toml-2.2.5.tgz#b32366c89b43c6f8cefbdefac778b9c828e3ba8c"
   integrity sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==
 
-"@munster/di@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@munster/di/-/di-0.0.1.tgz#f4849458550b80d660501d056f51d34a5010aa46"
-  integrity sha512-cgnAloA75eWj277na7uEX+3LZC1ohy16D4SO1EXTA5vsJcqrKYB+s8vfBl2vzz8CZ7S0zSRTTZ9WJVT7rw3bVg==
+"@munster/di@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@munster/di/-/di-0.0.10.tgz#12a19c53aa8bbbe493c5c2f987ac4ac2d03e9554"
+  integrity sha512-YeK1Oi+dXfcXqCW26YxoMg/TmjuvgYfIOrbcwR15IdsecxpHIVJPCBAqCmv2E9p+eXI5SwgU28zxDrunqkVlkQ==
   dependencies:
     reflect-metadata "^0.1.13"
 
@@ -4889,18 +4889,6 @@ tr46@^1.0.1:
   integrity sha1-qLE/1r/SSJUZZ0zN5VujaTtwbQk=
   dependencies:
     punycode "^2.1.0"
-
-tslib@^1.9.3:
-  version "1.14.1"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
-  integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
-
-tsyringe@^4.6.0:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/tsyringe/-/tsyringe-4.6.0.tgz#14915d3d7f0db35e1cf7269bdbf7c440713c8d07"
-  integrity sha512-BMQAZamSfEmIQzH8WJeRu1yZGQbPSDuI9g+yEiKZFIcO46GPZuMOC2d0b52cVBdw1d++06JnDSIIZvEnogMdAw==
-  dependencies:
-    tslib "^1.9.3"
 
 tty-browserify@^0.0.1:
   version "0.0.1"
